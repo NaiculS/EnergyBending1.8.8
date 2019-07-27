@@ -26,11 +26,11 @@ public class EnergybendAbility extends AvatarAbility implements AddonAbility {
     }
 
     public String getAuthor() {
-        return "AlexTheCoder";
+        return "AlexTheCoder, updated by NaiculS";
     }
 
     public String getVersion() {
-        return "v2.0";
+        return "v3.0";
     }
 
     public boolean isShiftAbility() {

@@ -40,7 +40,7 @@ public abstract class EnergybendAbility extends AvatarAbility implements AddonAb
         return false;
     }
 
-    public void onThisLoad() {
+    public void load() {
         ProjectKorra.plugin.getLogger().info("Enabling Addon Ability " + this.getName() + " by " + this.getAuthor());
         ProjectKorra.plugin.getServer().getPluginManager().registerEvents(new NaiculS.EnergyBending.EBListener(), ProjectKorra.plugin);
         ProjectKorra.plugin.getServer().getPluginManager().addPermission((new EBPermissions()).energybendPerm);

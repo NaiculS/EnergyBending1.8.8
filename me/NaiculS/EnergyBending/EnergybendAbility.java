@@ -7,13 +7,12 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import com.projectkorra.projectkorra.ability.AddonAbility;
 import com.projectkorra.projectkorra.ability.AvatarAbility;
-import com.projectkorra.projectkorra.ability.CoreAbility;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.permissions.PermissionDefault;
 
-public class EnergybendAbility extends AvatarAbility implements AddonAbility {
+public abstract class EnergybendAbility extends AvatarAbility implements AddonAbility { //just added abstract, remove if causes issues
     public static EnergybendAbility ability;
     public static ConcurrentHashMap<UUID, String> playerelements = new ConcurrentHashMap();
 
@@ -26,7 +25,7 @@ public class EnergybendAbility extends AvatarAbility implements AddonAbility {
     }
 
     public String getAuthor() {
-        return "AlexTheCoder, updated by NaiculS";
+        return "AlexTheCoder, updated to 1.8.8 by NaiculS";
     }
 
     public String getVersion() {
@@ -39,10 +38,6 @@ public class EnergybendAbility extends AvatarAbility implements AddonAbility {
 
     public boolean isHarmlessAbility() {
         return false;
-    }
-
-    public String getElement() {
-        return null;
     }
 
     public void onThisLoad() {

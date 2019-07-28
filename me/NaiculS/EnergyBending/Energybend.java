@@ -15,7 +15,7 @@ public class Energybend {
     public Energybend() {
     }
 
-    public static void EnergybendPlayer(Player energybender, Player target, Event.Result result) {
+    public static void EnergybendPlayer(Player energybender, Player target, EnergybendEvent.Result result) {
         BendingPlayer p = BendingPlayer.getBendingPlayer(energybender);
         if (result.equals(EnergybendEvent.Result.REMOVED) && EBMethods.canEnergybend(energybender) && EBMethods.canEnergybendPlayer(energybender, target)) {
             if (energybender.getHealth() > target.getHealth()) {

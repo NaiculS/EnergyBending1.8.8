@@ -16,8 +16,8 @@ public abstract class EnergybendAbility extends AvatarAbility implements AddonAb
     public static EnergybendAbility ability;
     public static ConcurrentHashMap<UUID, String> playerelements = new ConcurrentHashMap();
 
-    public EnergybendAbility() {
-        super("Energybending");
+    public EnergybendAbility(Player player) {
+        super(player);
     }
 
     public String getDescription() {

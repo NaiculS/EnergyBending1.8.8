@@ -32,7 +32,7 @@ public abstract class EnergybendAbility extends AvatarAbility implements AddonAb
         return "v3.0";
     }
 
-    public boolean isShiftAbility() {
+    public boolean isSneakAbility() {
         return true;
     }
 

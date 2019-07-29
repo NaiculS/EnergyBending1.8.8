@@ -16,30 +16,62 @@ public abstract class EnergybendAbility extends AvatarAbility implements AddonAb
     public static EnergybendAbility ability;
     public static ConcurrentHashMap<UUID, String> playerelements = new ConcurrentHashMap();
 
-    public EnergybendAbility(Player player) {
+    public EnergybendAbility(final Player player) {
         super(player);
+        start();
     }
 
+    @Override
     public String getDescription() {
         return "Crouch (default: shift) and hold with this ability bound, then right click on a player and you will remove/restore their bending! This ability has a 20 second cooldown and can only be used in the Avatar State. This ability cannot be used upon a target in the Avatar State!";
     }
 
+    @Override
+    public String getInstructions(){
+        return "Crouch (default: shift) and hold with this ability bound, then right click on a player and you will remove/restore their bending!";
+    }
+
+    @Override
+    public String getName(){
+        return "Energybending";
+    }
+
+    @Override
+    public void progress(){
+        if (!bPlayer.canBendIgnoreBindsCooldowns(this)) {
+            remove();
+            return;
+        }
+        
+    }
+
+    @Override
     public String getAuthor() {
         return "AlexTheCoder, updated to 1.8.8 by NaiculS";
     }
 
+    @Override
     public String getVersion() {
         return "v3.0";
     }
 
+    @Override
     public boolean isSneakAbility() {
         return true;
     }
 
+    @Override
     public boolean isHarmlessAbility() {
         return false;
     }
 
+    @Override
+    public void remove(){
+        super.remove();
+        bPlayer.addCooldown(this);
+    }
+
+    @Override
     public void load() {
         ProjectKorra.plugin.getLogger().info("Enabling Addon Ability " + this.getName() + " by " + this.getAuthor());
         ProjectKorra.plugin.getServer().getPluginManager().registerEvents(new NaiculS.EnergyBending.EBListener(), ProjectKorra.plugin);
@@ -47,6 +79,7 @@ public abstract class EnergybendAbility extends AvatarAbility implements AddonAb
         ProjectKorra.plugin.getServer().getPluginManager().getPermission("bending.ability.Energybending").setDefault(PermissionDefault.OP);
     }
 
+    @Override
     public void stop() {
         ProjectKorra.plugin.getLogger().info("Disabled " + this.getName());
         PlayerInteractEntityEvent.getHandlerList().unregister(new NaiculS.EnergyBending.EBListener());
@@ -62,6 +95,6 @@ public abstract class EnergybendAbility extends AvatarAbility implements AddonAb
 
             playerelements.clear();
         }
-
+        super.remove();
     }
 }

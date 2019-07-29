@@ -1,4 +1,4 @@
-package NaiculS.EnergyBending;
+package me.NaiculS.EnergyBending;
 
 import com.projectkorra.projectkorra.ProjectKorra;
 import java.util.Iterator;
@@ -74,7 +74,7 @@ public abstract class EnergybendAbility extends AvatarAbility implements AddonAb
     @Override
     public void load() {
         ProjectKorra.plugin.getLogger().info("Enabling Addon Ability " + this.getName() + " by " + this.getAuthor());
-        ProjectKorra.plugin.getServer().getPluginManager().registerEvents(new NaiculS.EnergyBending.EBListener(), ProjectKorra.plugin);
+        ProjectKorra.plugin.getServer().getPluginManager().registerEvents(new EBListener(), ProjectKorra.plugin);
         ProjectKorra.plugin.getServer().getPluginManager().addPermission((new EBPermissions()).energybendPerm);
         ProjectKorra.plugin.getServer().getPluginManager().getPermission("bending.ability.Energybending").setDefault(PermissionDefault.OP);
     }
@@ -82,7 +82,7 @@ public abstract class EnergybendAbility extends AvatarAbility implements AddonAb
     @Override
     public void stop() {
         ProjectKorra.plugin.getLogger().info("Disabled " + this.getName());
-        PlayerInteractEntityEvent.getHandlerList().unregister(new NaiculS.EnergyBending.EBListener());
+        PlayerInteractEntityEvent.getHandlerList().unregister(new EBListener());
         ProjectKorra.plugin.getServer().getPluginManager().removePermission((new EBPermissions()).energybendPerm);
         if (!playerelements.isEmpty()) {
             Iterator var2 = playerelements.keySet().iterator();

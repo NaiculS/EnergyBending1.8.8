@@ -1,4 +1,4 @@
-package NaiculS.EnergyBending;
+package me.NaiculS.EnergyBending;
 
 import org.bukkit.permissions.Permission;
 

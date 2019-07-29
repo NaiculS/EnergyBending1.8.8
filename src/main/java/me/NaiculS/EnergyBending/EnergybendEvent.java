@@ -1,4 +1,4 @@
-package NaiculS.EnergyBending;
+package me.NaiculS.EnergyBending;
 
 import com.projectkorra.projectkorra.BendingPlayer;
 import org.bukkit.GameMode;

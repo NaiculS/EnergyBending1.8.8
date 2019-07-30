@@ -8,17 +8,29 @@ import java.util.concurrent.ConcurrentHashMap;
 import com.projectkorra.projectkorra.ability.AddonAbility;
 import com.projectkorra.projectkorra.ability.AvatarAbility;
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.permissions.PermissionDefault;
 
-public abstract class EnergybendAbility extends AvatarAbility implements AddonAbility { //just added abstract, remove if causes issues
+public class EnergybendAbility extends AvatarAbility implements AddonAbility {
     public static EnergybendAbility ability;
     public static ConcurrentHashMap<UUID, String> playerelements = new ConcurrentHashMap();
+    private Location location = player.getEyeLocation();
 
     public EnergybendAbility(final Player player) {
         super(player);
         start();
+    }
+
+    @Override
+    public long getCooldown() {
+        return 20000;
+    }
+
+    @Override
+    public Location getLocation(){
+        return location;
     }
 
     @Override
